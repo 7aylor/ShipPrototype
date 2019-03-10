@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/default.spritefont","C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/bin/DesktopGL/default.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0.3520479
+"C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/dirt.png","C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/bin/DesktopGL/dirt.xnb","TextureProcessor","Texture2DContent",104,4181,0.0356769
+"C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/grass.png","C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/bin/DesktopGL/grass.xnb","TextureProcessor","Texture2DContent",104,4181,0.0143492
+"C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/ship.png","C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/bin/DesktopGL/ship.xnb","TextureProcessor","Texture2DContent",197,4181,0.014705
+"C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/water.png","C:/Users/7aylor/Desktop/Monogame/ShipPrototype/ShipGame/ShipGame/Content/bin/DesktopGL/water.xnb","TextureProcessor","Texture2DContent",104,4181,0.0129485
