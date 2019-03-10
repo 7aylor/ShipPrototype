@@ -15,6 +15,7 @@ namespace ShipGame
         //debug
         SpriteFont defaultFont;
         MouseState mState;
+        MouseState prevMState;
         int mPosToGridX;
         int mPosToGridY;
         Texture2D pixel;
@@ -32,7 +33,7 @@ namespace ShipGame
         }
         protected override void Initialize()
         {
-            map = new Map(40, 22, 10);
+            map = new Map(40, 22, 12);
             textures = new Dictionary<Tile, Texture2D>();
             textures.Add(Tile.Water, Content.Load<Texture2D>("water"));
             textures.Add(Tile.Grass, Content.Load<Texture2D>("grass"));
@@ -51,7 +52,6 @@ namespace ShipGame
             pixel.SetData(new Color[] { Color.White });
 
             DrawHelper.Init(spriteBatch, textures);
-
         }
 
         protected override void UnloadContent() {}
@@ -64,6 +64,14 @@ namespace ShipGame
             mState = Mouse.GetState();
             mPosToGridX = mState.Position.X / 32;
             mPosToGridY = mState.Position.Y / 32;
+
+            if(mState.LeftButton == ButtonState.Pressed && prevMState.LeftButton == ButtonState.Released)
+            {
+                map.Generate();
+            }
+
+            prevMState = Mouse.GetState();
+
 
             base.Update(gameTime);
         }

@@ -28,7 +28,7 @@ namespace ShipGame
         /// <summary>
         /// Generates the map for our game world
         /// </summary>
-        private void Generate()
+        public void Generate()
         {
             //random number generator to determine if a tile is land
             Random rand = new Random();
@@ -37,6 +37,8 @@ namespace ShipGame
             map = new Tile[SizeX, SizeY];
 
             int smoothCycles = 5;
+
+            Tile[,] tempMap = new Tile[SizeX, SizeY];
 
             //set up base map
             for(int y = 0; y < SizeY; y++)
@@ -54,18 +56,40 @@ namespace ShipGame
                 }
             }
 
-            //for(int i = 0; i < smoothCycles; i++)
-            //{
-            //    for (int y = 0; y < SizeY; y++)
-            //    {
-            //        for (int x = 0; x < SizeX; x++)
-            //        {
+            //make island clumps
+            for (int i = 0; i < smoothCycles; i++)
+            {
+                for (int y = 0; y < SizeY; y++)
+                {
+                    for (int x = 0; x < SizeX; x++)
+                    {
+                        int neighborLandCount = GetNeighborLandCount(x, y);
+                        if (neighborLandCount < 3 && rand.Next(0,100) < 99)
+                        {
+                            tempMap[x, y] = Tile.Water;
+                        }
+                        else
+                        {
+                            tempMap[x, y] = Tile.Grass;
+                        }
+                    }
+                }
+                map = tempMap;
+            }
 
-            //        }
-            //    }
-            //}
+            //Add Dirt
 
-            Console.WriteLine("4,4 has " + GetNeighborLandCount(4, 4) + " neighbors");
+            for (int y = 0; y < SizeY; y++)
+            {
+                for (int x = 0; x < SizeX; x++)
+                {
+                    int neighborLandCount = GetNeighborLandCount(x, y);
+                    if (map[x,y] == Tile.Grass && neighborLandCount <= 5)
+                    {
+                        map[x, y] = Tile.Dirt;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -85,7 +109,7 @@ namespace ShipGame
                        yPos + y > 0 && yPos + y < SizeY &&
                        (xPos + x != xPos || yPos + y != yPos))
                     {   
-                        if(map[xPos + x, yPos + y] == Tile.Grass)
+                        if(map[xPos + x, yPos + y] == Tile.Grass || map[xPos + x, yPos + y] == Tile.Dirt)
                         {
                             countNeighborLand++;
                         }
